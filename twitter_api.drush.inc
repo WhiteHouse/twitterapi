@@ -55,7 +55,7 @@ function drush_twitter_api_get($request) {
     // Return JSONP.
     $response = $callback . '(' . $response . ')';
   }
-  if ($format == 'pretty' || $format != 'json') {
+  if ($format == 'pretty' || ($format != 'json' && !$callback) ) {
     $response = print_r($response);
   }
 

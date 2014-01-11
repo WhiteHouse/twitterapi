@@ -40,7 +40,7 @@ function twitter_api_drush_help($section) {
 /**
  *
  */
-function drush_twitter_api_get($request) {
+function drush_twitter_api_twitter_api_get($request) {
   $twitterApi = new TwitterApi();
   $response = $twitterApi->get($request);
 

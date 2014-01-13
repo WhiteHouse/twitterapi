@@ -18,7 +18,7 @@ Install / Set-up
     - Register your app at dev.twitter.com to get OAuth credentials
     - Store your Twitter API creds in settings.php like this:
           ```php
-          $conf['twitter_api_credentials'] = array(
+          $conf['twitterapi_credentials'] = array(
             'consumer_key'    => 'xxx',
             'consumer_secret' => 'xxx',
             'token'           => 'xxx',
@@ -27,7 +27,7 @@ Install / Set-up
           ```
     - Enable the module like this:
           ```bash
-          drush en twitter_api
+          drush en twitterapi
           ```
 
 
@@ -47,7 +47,7 @@ Usage
   files to be copied up to a CDN:
 
     ```bash
-    drush twitter-api-get 'statuses/user_timeline.json?screen_name=whitehouse&count=3'
+    drush twitterapi-get 'statuses/user_timeline.json?screen_name=whitehouse&count=3'
     drush tg 'statuses/user_timeline.json?screen_name=whitehouse&count=3'
     drush tg 'statuses/user_timeline.json?screen_name=whitehouse&count=3' --callback=myJSONPCallbackGoesHere
     ```

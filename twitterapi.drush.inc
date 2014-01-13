@@ -8,10 +8,10 @@
 /**
  * Implements hook_drush_command().
  */
-function twitter_api_drush_command() {
+function twitterapi_drush_command() {
   $items = array();
 
-  $items['twitter-api-get'] = array(
+  $items['twitterapi-get'] = array(
     'description' => "Send GET requests to Twitter's API",
     'arguments' => array(
       'resource' => 'Relative path to any resouce documented here: https://dev.twitter.com/docs/api/1.1',
@@ -21,7 +21,7 @@ function twitter_api_drush_command() {
       'format' => '@todo provide options',
     ),
     'examples' => array(
-      'drush twitter-api-get "statuses/user_timeline.json?screen_name=whitehouse&count=3&include_rts=1"' => '',
+      'drush twitterapi-get "statuses/user_timeline.json?screen_name=whitehouse&count=3&include_rts=1"' => '',
       'drush tg "statuses/user_timeline.json?screen_name=whitehouse&count=1" --calback=myCallback' => '',
       'drush tg "statuses/user_timeline.json?screen_name=whitehouse&count=1" --format=json' => '',
       'drush tg "statuses/user_timeline.json?screen_name=whitehouse&count=1" --format=pretty' => '',
@@ -35,16 +35,16 @@ function twitter_api_drush_command() {
 /**
  * Implements hook_drush_help().
  */
-function twitter_api_drush_help($section) {
+function twitterapi_drush_help($section) {
   // @todo
 }
 
 /**
  * Implements drush_hook_COMMAND().
  *
- * @see twitter_api_drush_command()
+ * @see twitterapi_drush_command()
  */
-function drush_twitter_api_get($request) {
+function drush_twitterapi_get($request) {
   $twitter_api = new TwitterApi();
   $response = $twitter_api->get($request);
 

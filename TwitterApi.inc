@@ -40,8 +40,9 @@ class TwitterApi {
     $client = new Client('https://api.twitter.com/1.1');
 
     // Get credentials.
-    if (!$creds = variable_get('twitter_api_credentials', FALSE)) {
-      throw new Exception('Missing required twitter_api_credentials. See twitter_api/README');
+    $creds = variable_get('twitterapi_credentials', FALSE);
+    if (!$creds) {
+      throw new Exception('Missing required twitterapi_credentials variable. See twitterapi/README');
     }
 
     // Use Guzzle's Oauth plugin to take care of authentication.

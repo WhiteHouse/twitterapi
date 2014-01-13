@@ -1,4 +1,6 @@
 <?php
+
 /**
- * @file gettweets.module
+ * @file
+ * Provides a simple interface for interacting with Twitter REST API.
  */

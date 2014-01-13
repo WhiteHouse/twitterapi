@@ -1,6 +1,8 @@
 <?php
+
 /**
- * @file twitter_api.drush.inc
+ * @file
+ * Drush commands for the Twitter API module.
  */
 
 /**
@@ -16,7 +18,7 @@ function twitter_api_drush_command() {
     ),
     'options' => array(
       'callback' => 'Wrap JSON result in a JSONP callback defined here.',
-      'format' => 'TODO provide options'
+      'format' => '@todo provide options',
     ),
     'examples' => array(
       'drush twitter-api-get "statuses/user_timeline.json?screen_name=whitehouse&count=3&include_rts=1"' => '',
@@ -24,7 +26,7 @@ function twitter_api_drush_command() {
       'drush tg "statuses/user_timeline.json?screen_name=whitehouse&count=1" --format=json' => '',
       'drush tg "statuses/user_timeline.json?screen_name=whitehouse&count=1" --format=pretty' => '',
     ),
-    'aliases' => array(tg),
+    'aliases' => array('tg'),
   );
 
   return $items;
@@ -34,28 +36,32 @@ function twitter_api_drush_command() {
  * Implements hook_drush_help().
  */
 function twitter_api_drush_help($section) {
-  // TODO
+  // @todo
 }
 
 /**
+ * Implements drush_hook_COMMAND().
  *
+ * @see twitter_api_drush_command()
  */
 function drush_twitter_api_get($request) {
-  $twitterApi = new TwitterApi();
-  $response = $twitterApi->get($request);
+  $twitter_api = new TwitterApi();
+  $response = $twitter_api->get($request);
 
   $format = drush_get_option('format');
   $callback = drush_get_option('callback');
 
   if ($format == 'json' || $callback) {
     // Return response as JSON.
-    $response = json_encode($response);
+    $response = drupal_json_encode($response);
   }
+
   if ($callback) {
     // Return JSONP.
-    $response = $callback . '(' . $response . ')';
+    $response = "{$callback}({$response})";
   }
-  if ($format == 'pretty' || ($format != 'json' && !$callback) ) {
+
+  if ($format == 'pretty' || ($format != 'json' && !$callback)) {
     $response = print_r($response);
   }
 

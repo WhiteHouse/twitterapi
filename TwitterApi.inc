@@ -1,17 +1,19 @@
 <?php
 
+/**
+ * @file
+ * Contains TwitterApi.
+ */
+
 use Guzzle\Http\Client;
 use Guzzle\Plugin\Oauth\OauthPlugin;
 
 /**
- * Provides a simple wrapper around Twitter's REST API to make it
- * really easy to use with PHP.
+ * Provides a simple wrapper around Twitter's REST API.
  *
- * Basic interface: 
- *   TwitterApi::get
- *   TODO TwitterApi::post
- *   TODO TwitterApi::put
- *   TODO TwitterApi::delete
+ * @todo TwitterApi::post()
+ * @todo TwitterApi::put()
+ * @todo TwitterApi::delete()
  */
 class TwitterApi {
 
@@ -19,23 +21,26 @@ class TwitterApi {
    * Simple wrapper around Twitter REST API for GET requests.
    *
    * Just do this:
-   *  $twitterapi = new TwitterApi();
-   *  $twitterapi->get($request);
+   * @code
+   * $twitterapi = new TwitterApi();
+   * $twitterapi->get($request);
+   * @endcode
    *
-   * @param string $path
-   *   Pass any valid get request, documented here
-   *   https://dev.twitter.com/docs/api/1.1
-   *   E.g. 'statuses/user_timeline.json?screen_name=whitehouse&count=2&include_rts=1'
+   * @param string $request
+   *   Pass any valid get request, documented
+   *   @link https://dev.twitter.com/docs/api/1.1 here @endlink
+   *   . e.g.,
+   *   statuses/user_timeline.json?screen_name=whitehouse&count=2&include_rts=1.
    *
-   * @return array $response
-   *   Response from Twitter API, JSON decoded into a PHP array.
-   *   Returns false if request fails.
+   * @return array|false
+   *   A response from Twitter API, JSON decoded into a PHP array, or FALSE if
+   *   the request fails.
    */
   public function get($request) {
     $client = new Client('https://api.twitter.com/1.1');
 
     // Get credentials.
-    if (!$creds = variable_get('twitter_api_credentials', false)) {
+    if (!$creds = variable_get('twitter_api_credentials', FALSE)) {
       throw new Exception('Missing required twitter_api_credentials. See twitter_api/README');
     }
 
@@ -47,11 +52,13 @@ class TwitterApi {
     $response = $client->get($request)->send();
 
     // Confirm success or report failure.
-    $statusCode = (int) $response->getStatusCode();
-    if ($statusCode != 200) {
-      $reasonPhrase = $response->getReasonPhrase();
-      $message = t('!code: !reason. Request to !request failed.',
-        array('!code' => $statusCode, '!reason' => $reasonPhrase));
+    $status_code = (int) $response->getStatusCode();
+    if ($status_code != 200) {
+      $reason_phrase = $response->getReasonPhrase();
+      $message = t('!code: !reason. Request failed.', array(
+        '!code' => $status_code,
+        '!reason' => $reason_phrase,
+      ));
       watchdog('TwitterApi', $message);
       return FALSE;
     }

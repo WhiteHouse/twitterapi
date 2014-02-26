@@ -38,8 +38,8 @@ Usage
   https://dev.twitter.com/docs/api/1.1, like this:
 
     ```php
-    $twitter_api = new TwitterApi();
-    $response = $twitterApi->get('statuses/user_timeline.json?screen_name=whitehouse&count=3');
+    $twitterapi = new TwitterApi();
+    $response = $twitterapi->get('statuses/user_timeline.json?screen_name=whitehouse&count=3');
     ```
 
 

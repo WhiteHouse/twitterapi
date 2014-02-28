@@ -15,20 +15,20 @@ Dependencies
 Install / Set-up
 ----------------
 
-    - Register your app at dev.twitter.com to get OAuth credentials
-    - Store your Twitter API creds in settings.php like this:
-          ```php
-          $conf['twitterapi_credentials'] = array(
-            'consumer_key'    => 'xxx',
-            'consumer_secret' => 'xxx',
-            'token'           => 'xxx',
-            'token_secret'    => 'xxx',
-          );
-          ```
-    - Enable the module like this:
-          ```bash
-          drush en twitterapi
-          ```
+  - Register your app at dev.twitter.com to get OAuth credentials
+  - Store your Twitter API creds in settings.php like this:
+        ```php
+        $conf['twitterapi_credentials'] = array(
+          'consumer_key'    => 'xxx',
+          'consumer_secret' => 'xxx',
+          'token'           => 'xxx',
+          'token_secret'    => 'xxx',
+        );
+        ```
+  - Enable the module like this:
+        ```bash
+        drush en twitterapi
+        ```
 
 
 Usage

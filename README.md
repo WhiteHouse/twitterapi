@@ -35,7 +35,7 @@ Install / Set-up
 Usage
 -----
 
-  To use this in a module make any GET request documented here,
+  Use this in a module make any GET request documented here,
   https://dev.twitter.com/docs/api/1.1, like this:
 
   ```php

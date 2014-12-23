@@ -3,6 +3,6 @@ description = Provides a simple interface for interacting with Twitter REST API.
 core = 7.x
 php = 5.3
 
-dependencies[] = guzzle
+dependencies[] = composer_manager
 
 files[] = TwitterApi.inc

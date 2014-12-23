@@ -1,0 +1,11 @@
+{
+    "name": "drupal/twitterapi",
+    "type": "drupal-module",
+    "description": "",
+    "keywords": ["twitter", "guzzle"],
+    "homepage": "", 
+    "license": "GPL-2.0+",
+    "require": {
+       "guzzle/guzzle": "3.*"
+    }   
+}

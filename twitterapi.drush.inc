@@ -22,7 +22,7 @@ function twitterapi_drush_command() {
     ),
     'examples' => array(
       'drush twitterapi-get "statuses/user_timeline.json?screen_name=whitehouse&count=3&include_rts=1"' => '',
-      'drush tg "statuses/user_timeline.json?screen_name=whitehouse&count=1" --calback=myCallback' => '',
+      'drush tg "statuses/user_timeline.json?screen_name=whitehouse&count=1" --callback=myCallback' => '',
       'drush tg "statuses/user_timeline.json?screen_name=whitehouse&count=1" --format=json' => '',
       'drush tg "statuses/user_timeline.json?screen_name=whitehouse&count=1" --format=pretty' => '',
     ),

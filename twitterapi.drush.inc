@@ -14,7 +14,7 @@ function twitterapi_drush_command() {
   $items['twitterapi-get'] = array(
     'description' => "Send GET requests to Twitter's API",
     'arguments' => array(
-      'resource' => 'Relative path to any resouce documented here: https://dev.twitter.com/docs/api/1.1',
+      'resource' => 'Relative path to any resource documented here: https://dev.twitter.com/docs/api/1.1',
     ),
     'options' => array(
       'callback' => 'Wrap JSON result in a JSONP callback defined here.',

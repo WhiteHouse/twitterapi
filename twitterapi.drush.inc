@@ -14,7 +14,7 @@ function twitterapi_drush_command() {
   $items['twitterapi-get'] = array(
     'description' => "Send GET requests to Twitter's API",
     'arguments' => array(
-      'resource' => 'Relative path to any resouce documented here: https://dev.twitter.com/docs/api/1.1',
+      'resource' => 'Relative path to any resource documented here: https://dev.twitter.com/docs/api/1.1',
     ),
     'options' => array(
       'callback' => 'Wrap JSON result in a JSONP callback defined here.',
@@ -22,7 +22,7 @@ function twitterapi_drush_command() {
     ),
     'examples' => array(
       'drush twitterapi-get "statuses/user_timeline.json?screen_name=whitehouse&count=3&include_rts=1"' => '',
-      'drush tg "statuses/user_timeline.json?screen_name=whitehouse&count=1" --calback=myCallback' => '',
+      'drush tg "statuses/user_timeline.json?screen_name=whitehouse&count=1" --callback=myCallback' => '',
       'drush tg "statuses/user_timeline.json?screen_name=whitehouse&count=1" --format=json' => '',
       'drush tg "statuses/user_timeline.json?screen_name=whitehouse&count=1" --format=pretty' => '',
     ),
